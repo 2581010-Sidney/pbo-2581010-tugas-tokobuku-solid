@@ -1,15 +1,27 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class TokoBukuSolid {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        BukuCetak cetak1 = new BukuCetak("Pemrograman Java", "John Doe", 120000, 750);
+        BukuCetak cetak2 = new BukuCetak("Algoritma Dasar", "Jane Smith", 95000, 400);
+        BukuDigital digital = new BukuDigital("Belajar OOP", "Ani Wijaya", 80000, 12.5);
+        BukuAudio audio = new BukuAudio("Kisah Programmer", "Budi Santoso", 60000, 240);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Keranjang pertama = new Keranjang();
+        pertama.tambah(cetak1);
+        pertama.tambah(cetak2);
+        pertama.tambah(digital);
+        pertama.tambah(audio);
+
+        Keranjang kedua = new Keranjang();
+        kedua.tambah(digital);
+
+        MetodeBayar[] pilihan = { new Tunai(), new Transfer(), new EWallet(), new Voucher(100000)};
+
+        StrukPrinter.cetakKeranjang("KERANJANG PERTAMA", pertama);
+        StrukPrinter.cetakPembayaran(pertama.hitungTotal(), pilihan);
+
+        System.out.println();
+        StrukPrinter.cetakKeranjang("KERANJANG KEDUA", kedua);
+        StrukPrinter.cetakPembayaran(kedua.hitungTotal(), pilihan);
     }
 }
